@@ -1,0 +1,13 @@
+---
+import '../style.css';
+const { frontmatter } = Astro.props;
+---
+<!doctype html>
+<html lang="ja" class:list={{ nf: frontmatter.nerdfont }}>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+<title>{frontmatter.title}</title>
+</head>
+<body><slot /></body>
+</html>
