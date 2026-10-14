@@ -41,6 +41,7 @@ li a {
 h1 {
     font-family: "0xProto Nerd Font", system-ui;
     font-size: 1.5em;
+    white-space: nowrap;
 }
 
 p {
