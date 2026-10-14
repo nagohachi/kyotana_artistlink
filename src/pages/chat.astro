@@ -13,12 +13,19 @@ import '../chat.css';
         <p>麻婆豆腐です。</p>
       </div>
       <div class="msg user">
-        <p>この作品についての QR コードを生成してください。</p>
+        <p>この作品について解説してください。</p>
       </div>
       <div class="msg assistant">
+        <p>from tidiness import chaos は、京都府で活動する制作ユニット Makochi（Magochi と Kochi）によって制作されたコラージュ作品です。「京たな アーティストリンク」に出展されているようです。<br>
+          解説ページを作成し、QR コードを添付しましょうか。</p>
+      </div>
+      <div class="msg user">
+        <p>お願いします。</p>
+      </div>
+        <div class="msg assistant">
         <span class="typing" aria-hidden="true"><span></span><span></span><span></span></span>
         <div class="reply">
-          <p>承知しました。こちらが本作品の QR コードです。</p>
+          <p>承知しました。作品の解説ページの QR コードです。</p>
           <img src={qr.src} width={qr.width} height={qr.height} alt="本作品の QR コード">
         </div>
       </div>
