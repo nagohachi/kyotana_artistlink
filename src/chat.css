@@ -1,0 +1,137 @@
+/* full-screen layout: the log scrolls, the composer stays at the bottom */
+.chat {
+    position: fixed;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    max-width: 42rem;
+    margin-inline: auto;
+    padding: 1rem;
+}
+
+.log {
+    flex: 1;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    padding-block: 1rem;
+}
+
+.msg p {
+    margin: 0;
+}
+
+.user {
+    align-self: flex-end;
+    max-width: 80%;
+    padding: .625rem 1rem;
+    border-radius: 1.25rem;
+    background: color-mix(in srgb, CanvasText 8%, Canvas);
+}
+
+.assistant {
+    position: relative;
+}
+
+.reply img {
+    display: block;
+    width: 12rem;
+    height: auto;
+    margin-top: .75rem;
+    border-radius: .5rem;
+    background: #fff;
+}
+
+.typing {
+    position: absolute;
+    top: .5rem;
+    display: flex;
+    gap: .3rem;
+    opacity: 0;
+}
+
+.typing span {
+    width: .5rem;
+    height: .5rem;
+    border-radius: 50%;
+    background: currentColor;
+    opacity: .5;
+}
+
+.composer {
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+    padding: .5rem .5rem .5rem 1.25rem;
+    border: 1px solid color-mix(in srgb, CanvasText 15%, Canvas);
+    border-radius: 1.75rem;
+    background: Canvas;
+}
+
+.composer textarea {
+    flex: 1;
+    border: 0;
+    background: none;
+    color: inherit;
+    font: inherit;
+    resize: none;
+}
+
+.composer button {
+    width: 2.25rem;
+    height: 2.25rem;
+    border: 0;
+    border-radius: 50%;
+    background: CanvasText;
+    color: Canvas;
+    font: inherit;
+    opacity: .3;
+}
+
+/* earlier messages show at once; the last question → typing dots → reply → QR code */
+@media (prefers-reduced-motion: no-preference) {
+    .user:nth-last-child(2) {
+        animation: appear .3s .3s both;
+    }
+
+    .typing {
+        animation: typing 1.4s 1s;
+    }
+
+    .typing span {
+        animation: bounce 1s infinite;
+    }
+
+    .typing span:nth-child(2) {
+        animation-delay: .15s;
+    }
+
+    .typing span:nth-child(3) {
+        animation-delay: .3s;
+    }
+
+    .reply p {
+        animation: appear .4s 2.4s both;
+    }
+
+    .reply img {
+        animation: appear .4s 2.9s both;
+    }
+}
+
+@keyframes appear {
+    from {
+        opacity: 0;
+        translate: 0 .5rem;
+    }
+}
+
+@keyframes typing {
+    10%, 90% { opacity: 1; }
+}
+
+@keyframes bounce {
+    30% { translate: 0 -.3rem; }
+    60% { translate: 0; }
+}
